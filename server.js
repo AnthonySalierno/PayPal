@@ -8,7 +8,7 @@ import config from './webpack.config.js';
 const app = express();
 const compiler = webpack(config);
 
-app.use(express.static(__dirname + '/'));
+app.use(express.static(path.join(__dirname, '/dist')));
 app.use(webpackMiddleware(compiler));
 app.use(webpackHotMiddleware(compiler));
 app.get('*', function response(req, res) {

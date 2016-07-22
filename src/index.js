@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './Components/App';
-import LandingPage from './Components/LandingPage';
-import SendMoneyView from './Components/SendMoneyView';
-import TransactionHistoryView from './Components/TransactionHistoryView';
+import App from './components/App';
+import LandingPage from './components/LandingPage';
+import SendMoneyView from './components/SendMoneyView';
+import TransactionHistoryView from './components/TransactionHistoryView';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 
 ReactDOM.render(
