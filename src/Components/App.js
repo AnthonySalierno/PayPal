@@ -1,10 +1,9 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-
-class App extends React.Component {
-  render() {
-    return <div>App component rendering</div>
-  }
+function App(props) {
+  return (
+    <div>
+      {props.children}
+    </div>
+  )
 }
 
 export default App;
