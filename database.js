@@ -1,21 +1,21 @@
-var sequelize = require('sequelize');
-var path = require('path');
+import Sequelize from 'sequelize';
+import path from 'path';
 
-var sequelize = new Sequelize('PayPal', null, null, {
+const sequelize = new Sequelize('PayPal', null, null, {
   dialect: 'sqlite',
   storage: path.join(__dirname, 'paypal.sqlite')
 });
 
-var Transaction = sequelize.define('Transaction', {
+const Payments = sequelize.define('Payments', {
   firstName: Sequelize.STRING,
   lastName: Sequelize.STRING,
-  date: Sequelize.DATE,
+  // date: Sequelize.DATE,
   amount: Sequelize.INTEGER,
   currency: Sequelize.STRING,
   category: Sequelize.STRING,
 });
 
 module.exports = {
-  Transaction: Transaction,
-  sequelize: sequelize,
+  Payments,
+  sequelize,
 };
