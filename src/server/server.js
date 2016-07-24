@@ -18,6 +18,7 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '../../dist')));
 app.use(webpackMiddleware(compiler));
 app.use(webpackHotMiddleware(compiler));
+
 app.post('/send-money', (req, res) => {
   addPayment(req.body)
     .then(() => {
@@ -27,6 +28,7 @@ app.post('/send-money', (req, res) => {
       res.sendStatus(500);
     });
 });
+
 app.get('/transaction-history', (req, res) => {
   getPayments()
     .then((data) => {
@@ -36,6 +38,7 @@ app.get('/transaction-history', (req, res) => {
       res.sendStatus(500);
     });
 });
+
 app.get('*', function response(req, res) {
   res.sendFile(path.join(__dirname, '../../dist/index.html'));
 });

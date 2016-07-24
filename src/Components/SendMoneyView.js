@@ -17,6 +17,7 @@ class SendMoneyView extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.clearForm = this.clearForm.bind(this);
     this.submitPayment = this.submitPayment.bind(this);
+    this.validateEmail = this.validateEmail.bind(this);
   }
 
   handleChange(stateProp, event) {
@@ -29,21 +30,34 @@ class SendMoneyView extends React.Component {
     this.setState(this.default);
   }
 
+  validateEmail() {
+    const regEx = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return regEx.test(this.state.email);
+  }
+
+  validateAmount() {
+    const regEx = /^\d+(?:\.\d{0,2})$/;
+    return regEx.test(this.state.amount);
+  }
+
   submitPayment() {
     const {email, amount, category, currency} = this.state;
-    fetch('/send-money', {
-      method: 'POST',
-      body: JSON.stringify({
-        email,
-        amount,
-        category,
-        currency,
-      }),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    }).then(res => console.log(res))
-    this.clearForm();
+    const emailValidation = this.validateEmail();
+    const amountValidation = this.validateAmount();
+    if (emailValidation && amountValidation) {
+      fetch('/send-money', {
+        method: 'POST',
+        body: JSON.stringify({
+          email,
+          amount,
+          category,
+          currency,
+        }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }).then((res) => this.clearForm());
+    }
   }
 
   render() {
@@ -63,7 +77,7 @@ class SendMoneyView extends React.Component {
           <div className="currency-input">
             $
             <input
-              type="text"
+              type="number"
               name="currency"
               value={this.state.amount}
               onChange={e => this.handleChange('amount', e) }

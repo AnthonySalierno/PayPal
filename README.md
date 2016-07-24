@@ -3,10 +3,8 @@
 ## Description
 
 ## To Do
-* Rearrange file structure (create database directory)
 * Implement infinite scroll
 * Add basic styling
-* Form validation
 * Handle currency change
 * Have default selection for payment category
 * Implement loading indicator on payment submission
