@@ -1,5 +1,8 @@
 import React from 'react';
 
+import PaymentForm from './PaymentForm';
+import PaymentComplete from './PaymentComplete';
+
 class SendMoneyView extends React.Component {
   constructor(props) {
     super(props)
@@ -8,7 +11,7 @@ class SendMoneyView extends React.Component {
       amount: '0.00',
       message: '',
       category: '',
-      moneySent: false,
+      sent: false,
       currency: 'USD',
       symbol: '$',
     };
@@ -57,74 +60,35 @@ class SendMoneyView extends React.Component {
         headers: {
           'Content-Type': 'application/json',
         },
-      }).then((res) => this.clearForm());
+      }).then((res) => this.setState({
+        sent: true,
+      }));
     }
   }
 
   render() {
+    const component = this.state.sent ?
+      <PaymentComplete
+        { ...this.state }
+        handleChange={this.handleChange}
+        clearForm={this.clearForm}
+        validateEmail={this.validateEmail}
+        validateAmount={this.validateAmount}
+        submitPayment={this.submitPayment}
+      /> :
+      <PaymentForm
+        { ...this.state }
+        handleChange={this.handleChange}
+        clearForm={this.clearForm}
+        validateEmail={this.validateEmail}
+        validateAmount={this.validateAmount}
+        submitPayment={this.submitPayment}
+      />
+
     return (
       <div>
         <h1>Send Money</h1>
-          <div>
-            To:
-              <input
-                className="email-input"
-                type="text"
-                name="email-address"
-                value={this.state.email}
-                onChange={(e) => this.handleChange('email', e) }
-              />
-          </div>
-          <div className="currency-input">
-            <input
-              type="number"
-              name="currency"
-              value={this.state.amount}
-              onChange={e => this.handleChange('amount', e) }
-            />
-            <span className="currency-type">{this.state.symbol}</span>
-            <select onChange={(e) => this.handleChange('currency', e)} value={this.state.currency}>
-              <option value="USD">USD</option>
-              <option value="EUR">EUR</option>
-              <option value="JPY">JPY</option>
-            </select>
-          </div>
-          <div>
-            <textarea
-              placeholder="Message (optional):"
-              className="email-input"
-              type="text"
-              name="email-address"
-              value={this.state.message}
-              onChange={(e) => this.handleChange('message', e) }
-            />
-          </div>
-          <div>
-            <input
-              id="radio1"
-              className="radio-item"
-              type="radio"
-              name="send-to"
-              value="Personal"
-              onChange={e => this.handleChange('category', e) }
-            />
-            <label className="label-item" htmlFor="radio1">
-              <img src="assets/send-money-personal.png"/>
-            </label>
-            <input
-              id="radio2"
-              className="radio-item"
-              type="radio"
-              name="send-to"
-              value="Business"
-              onChange={e => this.handleChange('category', e) }
-            />
-            <label className="label-item" htmlFor="radio2">
-              <img src="assets/send-money-business.png"/>
-            </label>
-          </div>
-          <button onClick={this.clearForm}>Clear</button>
-          <button onClick={this.submitPayment}>Next</button>
+        {component}
       </div>
     )
   }
