@@ -6,7 +6,7 @@ I used
 ## To Do
 * Prompt user if input validation fails
 * Render proper currency symbol on dropdown change
-* Have default selection for payment category
+* Render responsive clickable images for payment category
 * Render loading view on payment submission
 * Render success screen following loading screen
 * Implement infinite scrolling

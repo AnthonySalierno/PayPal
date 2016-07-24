@@ -100,8 +100,29 @@ class SendMoneyView extends React.Component {
             />
           </div>
           <div>
-            <input type="radio" name="send-to" value="person"/>I'm sending money to family or friends
-            <input type="radio" name="send-to" value="business"/>I'm paying for goods or services
+            <input
+              id="radio1"
+              className="radio-item"
+              type="radio"
+              name="send-to"
+              value="Personal"
+              onChange={e => this.handleChange('category', e) }
+            />
+            <label className="label-item" htmlFor="radio1">
+              <img src="assets/send-money-personal.png"/>
+            </label>
+            <br/>
+            <input
+              id="radio2"
+              className="radio-item"
+              type="radio"
+              name="send-to"
+              value="Business"
+              onChange={e => this.handleChange('category', e) }
+            />
+            <label className="label-item" htmlFor="radio2">
+              <img src="assets/send-money-business.png"/>
+            </label>
           </div>
           <button onClick={this.clearForm}>Clear</button>
           <button onClick={this.submitPayment}>Next</button>

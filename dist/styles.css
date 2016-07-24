@@ -34,3 +34,19 @@ input[name="currency"] {
 #button-container {
   background: #009cde;
 }
+
+.radio-item{
+  display: none !important;
+}
+
+.label-item {
+  opacity: 0.1;
+}
+
+.radio-item:checked + label {
+  opacity: 1;
+}
+
+label {
+  cursor: pointer;
+}
