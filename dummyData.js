@@ -2,35 +2,6 @@ import { addPayment } from './controller';
 import { Promise } from 'sequelize';
 import { sequelize as db } from './database';
 
-// const generateRandomDate = (start, end) => {
-//   const startDate = new Date(2012, 0, 1).getTime();
-//   const endDate =  new Date(2015, 0, 1).getTime();
-//   const spaces = (endDate - startDate);
-//   let timestamp = Math.round(Math.random() * spaces);
-//   timestamp += startDate;
-//   return new Date(timestamp);
-// };
-//
-// const formatDate = (date) => {
-//   let month = randomDate().getMonth();
-//   let day = randomDate().getDate();
-//   let hours = randomDate().getHours();
-//   let minutes = randomDate().getMinutes();
-//   let seconds = randomDate().getSeconds();
-//
-//   month = month < 10 ? '0' + month : month;
-//   day = day < 10 ? '0' + day : day;
-//   hours = hours < 10 ? '0' + hours : hours;
-//   minutes = minutes < 10 ? '0' + minutes : minutes;
-//   seconds = seconds < 10 ? '0' + seconds : seconds;
-//
-//   return String(date.getFullYear()) + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds;
-// };
-//
-// const generateDates = function(numberOfDates, start, end) {
-//   // format dates as: '2007-01-01 10:00:00'
-// };
-
 const generateFirstName = () => {
   const randomIndex = Math.floor(Math.random() * firstNames.length)
   return firstNames[randomIndex];
