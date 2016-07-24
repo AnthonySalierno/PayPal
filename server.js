@@ -7,7 +7,7 @@ import bodyParser from 'body-parser';
 
 import config from './webpack.config.js';
 import initializeDatabase from './dummyData';
-import { addPayment } from './controller';
+import { addPayment, getPayments } from './controller';
 
 const app = express();
 const compiler = webpack(config);
@@ -28,7 +28,13 @@ app.post('/send-money', (req, res) => {
     });
 });
 app.get('/transaction-history', (req, res) => {
-
+  getPayments()
+    .then((data) => {
+      res.status(200).send(data);
+    })
+    .catch(() => {
+      res.sendStatus(500);
+    });
 });
 app.get('*', function response(req, res) {
   res.sendFile(path.join(__dirname, 'dist/index.html'));

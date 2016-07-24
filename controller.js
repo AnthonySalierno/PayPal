@@ -5,5 +5,5 @@ export function addPayment(payment) {
 }
 
 export function getPayments() {
-
+  return db.Payments.findAll();
 }
