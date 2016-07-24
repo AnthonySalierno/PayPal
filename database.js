@@ -7,8 +7,7 @@ const sequelize = new Sequelize('PayPal', null, null, {
 });
 
 const Payments = sequelize.define('Payments', {
-  firstName: Sequelize.STRING,
-  lastName: Sequelize.STRING,
+  email: Sequelize.STRING,
   amount: Sequelize.INTEGER,
   currency: Sequelize.STRING,
   category: Sequelize.STRING,
