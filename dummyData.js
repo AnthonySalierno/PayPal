@@ -38,8 +38,8 @@ const generateCategoryType = (categoryTypes) => {
   return categoryTypes[Math.floor(Math.random() * categoryTypes.length)];
 };
 
-const MIN_YEAR = 2000;
-const MAX_YEAR = 2016;
+const MIN_PAYMENT = 1;
+const MAX_PAYMENT = 5000;
 const CURRENCY_TYPES = ['USD', 'EUR', 'JPY'];
 const CATEGORY_TYPES = ['Personal', 'Business'];
 
@@ -65,7 +65,7 @@ const HOSTS = [
 
 const generatePayment = () => {
   const email = generateEmail();
-  const amount = generatePaymentAmount(MIN_YEAR, MAX_YEAR);
+  const amount = generatePaymentAmount(MIN_PAYMENT, MAX_PAYMENT);
   const currency = generateCurrencyType(CURRENCY_TYPES);
   const category = generateCategoryType(CATEGORY_TYPES);
   return {
