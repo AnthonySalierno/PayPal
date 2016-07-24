@@ -1,5 +1,6 @@
 import { addPayment } from './controller';
 import { Promise } from 'sequelize';
+import { sequelize as db } from './database';
 
 // const generateRandomDate = (start, end) => {
 //   const startDate = new Date(2012, 0, 1).getTime();
@@ -48,7 +49,7 @@ const generateCurrencyType = (currencyTypes) => {
   return currencyTypes[Math.floor(Math.random() * currencyTypes.length)];
 };
 
-const generateCategoryTypes = (categoryTypes) => {
+const generateCategoryType = (categoryTypes) => {
   return categoryTypes[Math.floor(Math.random() * categoryTypes.length)];
 };
 
@@ -144,11 +145,14 @@ const generatePayment = () => {
 
 const NUMBER_OF_PAYMENTS = 250;
 
-function initializeData() {
+function initializeDatabase() {
   const payments = [];
   for (let i = 0; i < NUMBER_OF_PAYMENTS; i++) {
     const payment = generatePayment();
     payments.push(payment);
   }
-  return Promise.each(payments, addPayment);
+  return db.sync({ force: true })
+    .then(() => Promise.each(payments, addPayment));
 }
+
+export default initializeDatabase;
