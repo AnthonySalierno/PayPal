@@ -1,6 +1,6 @@
 import { addPayment } from './controller';
 import { Promise } from 'sequelize';
-import { sequelize as db } from './database';
+import { sequelize as db } from './model';
 
 const getRandomElement = (arr) => {
   const randomIndex = Math.floor(Math.random() * arr.length);

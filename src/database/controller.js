@@ -1,4 +1,4 @@
-import db from './database';
+import db from './model';
 
 export function addPayment(payment) {
   return db.Payments.create(payment);
