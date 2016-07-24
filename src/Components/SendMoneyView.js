@@ -90,8 +90,8 @@ class SendMoneyView extends React.Component {
             </select>
           </div>
           <div>
-            Message (optional):
-            <input
+            <textarea
+              placeholder="Message (optional):"
               className="email-input"
               type="text"
               name="email-address"
