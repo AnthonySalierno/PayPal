@@ -10,6 +10,7 @@ class SendMoneyView extends React.Component {
       category: 'Personal',
       moneySent: false,
       currency: 'USD',
+      symbol: '$',
     };
 
     this.state = this.default;
@@ -75,17 +76,17 @@ class SendMoneyView extends React.Component {
               />
           </div>
           <div className="currency-input">
-            $
             <input
               type="number"
               name="currency"
               value={this.state.amount}
               onChange={e => this.handleChange('amount', e) }
             />
-            <select onChange={e => this.handleChange('currency', e) }>
-              <option value="usd">USD</option>
-              <option value="eur">EUR</option>
-              <option value="jpy">JPY</option>
+            <span className="currency-type">{this.state.symbol}</span>
+            <select onChange={(e) => this.handleChange('currency', e)} value={this.state.currency}>
+              <option value="USD">USD</option>
+              <option value="EUR">EUR</option>
+              <option value="JPY">JPY</option>
             </select>
           </div>
           <div>
@@ -93,14 +94,14 @@ class SendMoneyView extends React.Component {
             <input
               className="email-input"
               type="text"
-              name="emailaddress"
+              name="email-address"
               value={this.state.message}
               onChange={(e) => this.handleChange('message', e) }
             />
           </div>
           <div>
-            <input type="radio" name="send-to" value="person"/>I'm sending money to family or friends<br/>
-            <input type="radio" name="send-to" value="business"/>I'm paying for goods or services<br/>
+            <input type="radio" name="send-to" value="person"/>I'm sending money to family or friends
+            <input type="radio" name="send-to" value="business"/>I'm paying for goods or services
           </div>
           <button onClick={this.clearForm}>Clear</button>
           <button onClick={this.submitPayment}>Next</button>

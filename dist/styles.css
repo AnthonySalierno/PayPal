@@ -6,3 +6,23 @@
 div {
   padding-bottom: 50px;
 }
+
+.currency-input {
+  position: relative;
+}
+
+input[name="currency"] {
+  display: block;
+  border: 1px solid #d7d6d6;
+  background: #fff;
+  padding: 10px 10px 10px 20px;
+  width: 195px;
+}
+
+.currency-type {
+  position: absolute;
+  display: block;
+  left: 5px;
+  top: 10px;
+  z-index: 9;
+}

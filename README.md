@@ -12,7 +12,6 @@
 * Modularize server (break out routes)
 * Implement back button in transaction history
 
-
 ## Start-up
 ```
 npm install
