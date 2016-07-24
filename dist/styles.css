@@ -30,3 +30,7 @@ input[name="currency"] {
 .transaction-record {
   padding: 5px 5px 5px 5px;
 }
+
+#button-container {
+  background: #009cde;
+}
