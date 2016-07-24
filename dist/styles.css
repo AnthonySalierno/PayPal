@@ -26,3 +26,7 @@ input[name="currency"] {
   top: 10px;
   z-index: 9;
 }
+
+.transaction-record {
+  padding: 5px 5px 5px 5px;
+}

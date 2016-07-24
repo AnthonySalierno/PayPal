@@ -1,11 +1,9 @@
-export default function TransactionItem({amount, email}) {
+export default function TransactionItem({amount, email, currency, createdAt}) {
   return (
-      <div>
-        <h5>Transaction Item</h5>
-        <div>
-          <span>{amount}</span>
-          <span>{email}</span>
-        </div>
+      <div className="transaction-record">
+        <span className="transaction-record payment">{amount + " " + currency}</span>
+        <span className="transaction-record email">{email}</span>
+        <span className="transaction-record created-at">{createdAt}</span>
       </div>
     )
 }

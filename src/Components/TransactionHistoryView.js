@@ -24,8 +24,8 @@ class TransactionHistoryView extends React.Component {
     return (
       <div>
         <h1>Transaction History</h1>
-        {this.state.payments.map(({email, amount}, i) =>
-          <TransactionItem key={i} email={email} amount={amount}/>)}
+        {this.state.payments.reverse().map(({email, amount, currency, createdAt}, i) =>
+          <TransactionItem key={i} email={email} amount={amount} currency={currency} createdAt={createdAt}/>)}
       </div>
     )
   }
