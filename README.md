@@ -4,12 +4,11 @@
 I used
 
 ## To Do
-* Prompt user if input validation fails
-* Render proper currency symbol on dropdown change
-* Render responsive clickable images for payment category
 * Render loading view on payment submission
 * Render success screen following loading screen
 * Implement infinite scrolling
+* Render proper currency symbol on dropdown change
+* Prompt user if input validation fails
 * Add styling
 * Modularize server (break out routes)
 * Create better dates than createdAt dates

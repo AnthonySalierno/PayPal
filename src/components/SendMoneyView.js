@@ -7,7 +7,7 @@ class SendMoneyView extends React.Component {
       email: '',
       amount: '0.00',
       message: '',
-      category: 'Personal',
+      category: '',
       moneySent: false,
       currency: 'USD',
       symbol: '$',
@@ -111,7 +111,6 @@ class SendMoneyView extends React.Component {
             <label className="label-item" htmlFor="radio1">
               <img src="assets/send-money-personal.png"/>
             </label>
-            <br/>
             <input
               id="radio2"
               className="radio-item"
