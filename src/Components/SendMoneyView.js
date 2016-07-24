@@ -30,7 +30,7 @@ class SendMoneyView extends React.Component {
   }
 
   submitPayment() {
-    const {email, amount, category, currency} = this.state
+    const {email, amount, category, currency} = this.state;
     fetch('/send-money', {
       method: 'POST',
       body: JSON.stringify({
@@ -88,9 +88,6 @@ class SendMoneyView extends React.Component {
             <input type="radio" name="send-to" value="person"/>I'm sending money to family or friends<br/>
             <input type="radio" name="send-to" value="business"/>I'm paying for goods or services<br/>
           </div>
-          <br/>
-          <br/>
-          <br/>
           <button onClick={this.clearForm}>Clear</button>
           <button onClick={this.submitPayment}>Next</button>
       </div>
