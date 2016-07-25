@@ -1,6 +1,7 @@
 export default function TransactionItem({amount, email, currency, createdAt}) {
   const date = new Date(createdAt);
   const formattedDate = date.toLocaleDateString('en-us');
+  
   return (
     <div className="transaction-record">
       <span className="transaction-record payment">{`${amount} ${currency}`}</span>

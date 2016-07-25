@@ -13,41 +13,42 @@ export default function PaymentForm(props) {
     currency,
     handleChange,
     clearForm,
-    validateEmail,
-    validateAmount,
     submitPayment,
   } = props;
 
   const symbol = currencyToSymbol(currency);
 
   const emailValidation = emailValidated === false ?
-    <div className="email-validated">Please enter a valid email: example@gmail.com</div> : '';
+    <div className="email-not-validated">Please enter a valid email: example@gmail.com</div> :
+    <div className="email-validated">Almost there!</div>;
 
   const amountValidation = amountValidated === false ?
-    <div className="amount-validated">Please enter a valid amount: x.xx</div> : '';
+    <div className="amount-not-validated">Please enter a valid amount: x.xx</div> :
+    <div className="amount-validated">Keep going!</div>;
 
   return (
     <div>
-      <div>
-        To:
-          <input
-            className="email-input"
-            type="text"
-            name="email-address"
-            value={email}
-            onChange={(e) => handleChange('email', e) }
-          />
-          {emailValidation}
+      <div className="email-input">
+        <input
+          type="text"
+          name="email"
+          value={email}
+          onChange={(e) => handleChange('email', e) }
+        />
+        <span className="email-payee">To:</span>
+        {emailValidation}
       </div>
       <div className="currency-input">
         <input
-          type="number"
+          type="text"
+          maxLength="10"
           name="currency"
-          value={amount}
+          placeholder='0.00'
           onChange={e => handleChange('amount', e) }
         />
         <span className="currency-type">{symbol}</span>
-        <select onChange={(e) => handleChange('currency', e)} value={currency}>
+
+        <select className="currency-dropdown" onChange={(e) => handleChange('currency', e)} value={currency}>
           <option value="USD">USD</option>
           <option value="EUR">EUR</option>
           <option value="JPY">JPY</option>
@@ -90,8 +91,8 @@ export default function PaymentForm(props) {
           <img src="assets/send-money-business.png"/>
         </label>
       </div>
-      <button onClick={clearForm}>Clear</button>
-      <button onClick={submitPayment}>Next</button>
+      <button className="clear-form" onClick={clearForm}>Clear</button>
+      <button className="submit-payment" onClick={submitPayment}>Next</button>
     </div>
   )
 }

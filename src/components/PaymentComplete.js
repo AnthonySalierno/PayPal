@@ -10,17 +10,17 @@ export default function PaymentComplete(props) {
     sent,
     clearForm
   } = props;
-  
+
   const symbol = currencyToSymbol(currency);
 
   return (
     <div>
       <p>{`You have sent ${symbol}${amount} ${currency} to ${email}!`}</p>
       <Link to="/send-money">
-        <button onClick={clearForm}>SendMoney</button>
+        <button className="send-more-money" onClick={clearForm}>SendMoney</button>
       </Link>
       <Link to="/transaction-history">
-        <button>Transaction History</button>
+        <button className="view-transaction-history">Transaction History</button>
       </Link>
     </div>
   )

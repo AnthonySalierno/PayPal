@@ -10,7 +10,7 @@ class SendMoneyView extends React.Component {
     this.default = {
       email: '',
       emailValidated: false,
-      amount: '0.00',
+      amount: '',
       amountValidated: false,
       message: '',
       category: 'Personal',
@@ -49,7 +49,7 @@ class SendMoneyView extends React.Component {
   }
 
   validateAmount() {
-    const regEx = /^\d+(?:\.\d{0,2})$/;
+    const regEx = /^(([1-9][0-9]{0,2}(,[0-9]{3})*)|[0-9]+)?\.[0-9]{1,2}$/
     const newAmountValidatedState = regEx.test(this.state.amount);
     this.setState({
       amountValidated: newAmountValidatedState,
