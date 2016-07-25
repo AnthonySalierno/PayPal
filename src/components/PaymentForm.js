@@ -1,3 +1,5 @@
+import { currencyToSymbol } from '../utils';
+
 export default function PaymentForm(props) {
   const {
     email,
@@ -7,13 +9,14 @@ export default function PaymentForm(props) {
     sent,
     submitted,
     currency,
-    symbol,
     handleChange,
     clearForm,
     validateEmail,
     validateAmount,
     submitPayment
   } = props;
+
+  const symbol = currencyToSymbol(currency);
 
   return (
     <div>

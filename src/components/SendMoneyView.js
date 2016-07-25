@@ -2,6 +2,7 @@ import React from 'react';
 
 import PaymentForm from './PaymentForm';
 import PaymentComplete from './PaymentComplete';
+import { currencyToSymbol } from '../utils';
 
 class SendMoneyView extends React.Component {
   constructor(props) {
@@ -14,7 +15,6 @@ class SendMoneyView extends React.Component {
       fetching: false,
       sent: false,
       currency: 'USD',
-      symbol: '$',
     };
 
     this.state = this.default;

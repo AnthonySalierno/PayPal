@@ -4,9 +4,7 @@
 I used
 
 ## To Do
-* Render loading view on payment submission
 * Implement infinite scrolling
-* Render proper currency symbol on dropdown change
 * Prompt user if input validation fails
 * Add styling
 * Modularize server (break out routes)
