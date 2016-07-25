@@ -1,15 +1,14 @@
 # PayPal UIE Take Home Exercise
 
 ## Description
-I used
+Hello!  For this take home exercise I used React to build the view, Node and Express for the server and SQLite for the database with Sequelize as an ORM.  
 
 ## To Do
 * Implement infinite scrolling
 * Add styling
-* Prompt user if input validation fails
 * Modularize server (break out routes)
 * Create better dates than createdAt dates
-* Linter
+* Add linter
 * Unit tests
 * Expand transactions on click
 

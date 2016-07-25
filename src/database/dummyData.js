@@ -23,7 +23,7 @@ const generateEmail = () => {
   const firstName = generateFirstName();
   const lastName = generateLastName();
   const hostName = generateHost();
-  return firstName.concat(lastName, '@', hostName).toLowerCase();
+  return firstName.concat('.', lastName, '@', hostName).toLowerCase();
 }
 
 const generatePaymentAmount = (min, max) => {

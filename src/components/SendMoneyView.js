@@ -62,7 +62,7 @@ class SendMoneyView extends React.Component {
     const amountValidated = this.state.amountValidated;
     if (emailValidated && amountValidated) {
       const makePayment = () => {
-        fetch('/send-money', {
+        fetch('/api/send-money', {
           method: 'POST',
           body: JSON.stringify({
             email,

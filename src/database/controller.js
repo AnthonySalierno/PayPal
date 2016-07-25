@@ -1,6 +1,6 @@
 import db from './model';
 
-const MAX_PAYMENTS = 25;
+const MAX_PAYMENTS = 50;
 
 export function addPayment(payment) {
   return db.Payments.create(payment);

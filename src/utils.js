@@ -7,3 +7,13 @@ export function currencyToSymbol(currency) {
     return '¥';
   }
 }
+
+export function debounce(func, wait) {
+  let timeout;
+  return function() {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => {
+      return func.apply(this, arguments);
+    }, wait);
+  };
+}

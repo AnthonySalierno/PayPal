@@ -19,7 +19,7 @@ app.use(express.static(path.join(__dirname, '../../dist')));
 app.use(webpackMiddleware(compiler));
 app.use(webpackHotMiddleware(compiler));
 
-app.post('/send-money', (req, res) => {
+app.post('/api/send-money', (req, res) => {
   addPayment(req.body)
     .then(() => {
       res.sendStatus(201);
@@ -29,9 +29,9 @@ app.post('/send-money', (req, res) => {
     });
 });
 
-app.get('/transaction-history', (req, res) => {
+app.get('/api/transaction-history', (req, res) => {
   const page = req.query.page;
-  getPayments(page)
+  getPayments(page);
     .then((data) => {
       res.status(200).send(data);
     })
