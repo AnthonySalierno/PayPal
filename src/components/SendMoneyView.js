@@ -90,6 +90,7 @@ class SendMoneyView extends React.Component {
     const component = this.state.sent ?
       <PaymentComplete
         { ...this.state }
+        clearForm={this.clearForm}
       /> :
       <PaymentForm
         { ...this.state }
