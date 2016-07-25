@@ -32,28 +32,8 @@ class SendMoneyView extends React.Component {
     const newState = {};
     newState[stateProp] = event.target.value;
     this.setState(newState);
-
-    const emailValidation = this.validateEmail();
-    if (emailValidation) {
-      this.setState({
-        emailValidated: true,
-      })
-    } else {
-      this.setState({
-        emailValidated: false,
-      });
-    }
-
-    const amountValidation = this.validateAmount();
-    if (amountValidation) {
-      this.setState({
-        amountValidated: true,
-      })
-    } else {
-      this.setState({
-        amountValidated: false,
-      });
-    }
+    this.validateEmail();
+    this.validateAmount();
   }
 
   clearForm() {
@@ -62,19 +42,25 @@ class SendMoneyView extends React.Component {
 
   validateEmail() {
     const regEx = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return regEx.test(this.state.email);
+    const newEmailValidatedState = regEx.test(this.state.email);
+    this.setState({
+      emailValidated: newEmailValidatedState,
+    })
   }
 
   validateAmount() {
     const regEx = /^\d+(?:\.\d{0,2})$/;
-    return regEx.test(this.state.amount);
+    const newAmountValidatedState = regEx.test(this.state.amount);
+    this.setState({
+      amountValidated: newAmountValidatedState,
+    })
   }
 
   submitPayment() {
     const {email, amount, category, currency} = this.state;
-    const emailValidation = this.validateEmail();
-    const amountValidation = this.validateAmount();
-    if (emailValidation && amountValidation) {
+    const emailValidated = this.state.emailValidated;
+    const amountValidated = this.state.amountValidated;
+    if (emailValidated && amountValidated) {
       const makePayment = () => {
         fetch('/send-money', {
           method: 'POST',
