@@ -61,6 +61,7 @@ export default function PaymentForm(props) {
           type="radio"
           name="send-to"
           value="Personal"
+          checked={category === 'Personal'}
           onChange={e => handleChange('category', e) }
         />
         <label className="label-item" htmlFor="radio1">
@@ -72,6 +73,7 @@ export default function PaymentForm(props) {
           type="radio"
           name="send-to"
           value="Business"
+          checked={category === 'Business'}
           onChange={e => handleChange('category', e) }
         />
         <label className="label-item" htmlFor="radio2">

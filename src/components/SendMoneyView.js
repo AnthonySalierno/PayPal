@@ -11,7 +11,7 @@ class SendMoneyView extends React.Component {
       email: '',
       amount: '0.00',
       message: '',
-      category: '',
+      category: 'Personal',
       fetching: false,
       sent: false,
       currency: 'USD',
