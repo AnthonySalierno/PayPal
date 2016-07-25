@@ -5,8 +5,8 @@ I used
 
 ## To Do
 * Implement infinite scrolling
-* Prompt user if input validation fails
 * Add styling
+* Prompt user if input validation fails
 * Modularize server (break out routes)
 * Create better dates than createdAt dates
 * Linter

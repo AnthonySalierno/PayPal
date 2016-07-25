@@ -30,7 +30,8 @@ app.post('/send-money', (req, res) => {
 });
 
 app.get('/transaction-history', (req, res) => {
-  getPayments()
+  const page = req.query.page;
+  getPayments(page)
     .then((data) => {
       res.status(200).send(data);
     })

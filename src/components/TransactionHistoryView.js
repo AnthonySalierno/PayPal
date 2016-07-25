@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { Link } from 'react-router';
 
 import TransactionItem from './TransactionItem';
@@ -8,17 +9,33 @@ class TransactionHistoryView extends React.Component {
     super(props)
     this.state = {
       payments: [],
+      page: 0,
+      loading: false,
     }
+    window.addEventListener('scroll', this.handleScroll);
   }
 
   componentDidMount() {
-    fetch('/transaction-history')
+    const {page} = this.state;
+    const url = '/transaction-history?page=' + page;
+    fetch(url)
       .then(res => res.json())
       .then((payments) => {
         this.setState({
-          payments,
+          payments: payments.concat(payments),
+          page: this.state.page++,
         });
       })
+  }
+
+  handleScroll(event) {
+    const scrollHeight = document.body.scrollHeight;
+    const scrollTop = document.body.scrollTop;
+    const innerHeight = window.innerHeight;
+
+    if (scrollHeight === scrollTop + window.innerHeight) {
+      //fetch data
+    }
   }
 
   render() {
