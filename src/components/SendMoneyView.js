@@ -9,7 +9,9 @@ class SendMoneyView extends React.Component {
     super(props)
     this.default = {
       email: '',
+      emailValidated: false,
       amount: '0.00',
+      amountValidated: false,
       message: '',
       category: 'Personal',
       fetching: false,
@@ -21,14 +23,37 @@ class SendMoneyView extends React.Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.clearForm = this.clearForm.bind(this);
-    this.submitPayment = this.submitPayment.bind(this);
     this.validateEmail = this.validateEmail.bind(this);
+    this.validateAmount = this.validateAmount.bind(this);
+    this.submitPayment = this.submitPayment.bind(this);
   }
 
   handleChange(stateProp, event) {
     const newState = {};
     newState[stateProp] = event.target.value;
     this.setState(newState);
+
+    const emailValidation = this.validateEmail();
+    if (emailValidation) {
+      this.setState({
+        emailValidated: true,
+      })
+    } else {
+      this.setState({
+        emailValidated: false,
+      });
+    }
+
+    const amountValidation = this.validateAmount();
+    if (amountValidation) {
+      this.setState({
+        amountValidated: true,
+      })
+    } else {
+      this.setState({
+        amountValidated: false,
+      });
+    }
   }
 
   clearForm() {
@@ -89,7 +114,8 @@ class SendMoneyView extends React.Component {
         submitPayment={this.submitPayment}
       />
 
-    const spinner = this.state.fetching ? <div className="spinner"><img src='assets/spinner.gif'/></div> : ''
+    const spinner = this.state.fetching ?
+      <div className="spinner"><img src='assets/spinner.gif'/></div> : '';
 
     return (
       <div>

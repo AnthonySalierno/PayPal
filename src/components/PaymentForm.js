@@ -3,7 +3,9 @@ import { currencyToSymbol } from '../utils';
 export default function PaymentForm(props) {
   const {
     email,
+    emailValidated,
     amount,
+    amountValidated,
     message,
     category,
     sent,
@@ -13,10 +15,16 @@ export default function PaymentForm(props) {
     clearForm,
     validateEmail,
     validateAmount,
-    submitPayment
+    submitPayment,
   } = props;
 
   const symbol = currencyToSymbol(currency);
+
+  const emailValidation = emailValidated === false ?
+    <div className="email-validated">Please enter a valid email: example@gmail.com</div> : '';
+
+  const amountValidation = amountValidated === false ?
+    <div className="amount-validated">Please enter a valid amount: x.xx</div> : '';
 
   return (
     <div>
@@ -29,6 +37,7 @@ export default function PaymentForm(props) {
             value={email}
             onChange={(e) => handleChange('email', e) }
           />
+          {emailValidation}
       </div>
       <div className="currency-input">
         <input
@@ -43,6 +52,7 @@ export default function PaymentForm(props) {
           <option value="EUR">EUR</option>
           <option value="JPY">JPY</option>
         </select>
+        {amountValidation}
       </div>
       <div>
         <textarea

@@ -4,6 +4,7 @@ import { currencyToSymbol } from '../utils';
 
 export default function PaymentComplete({amount, currency, email}) {
   const symbol = currencyToSymbol(currency);
+
   return (
     <div>
       <p>{`You have sent ${symbol}${amount} ${currency} to ${email}!`}</p>

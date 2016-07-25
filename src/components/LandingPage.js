@@ -6,27 +6,29 @@ import LandingButton from './LandingButton';
 class LandingPage extends React.Component {
   render() {
     return (
-      <div id="button-container">
-        <h1>
+      <div>
+        <h1 className="title">
           <img className="paypal-logo" src='assets/paypal-logo.png'/>
-          UI Exercise
+          UIE Take Home Exercise
         </h1>
-        <Link to='send-money'>
-          <LandingButton
-            buttonName={'Send Money'}
-            imgId={'send-money-button'}
-            imgSrc={'/assets/send-money.png'}
-            imgAlt={'Send Money'}
-          />
-        </Link>
-        <Link to='transaction-history'>
-          <LandingButton
-            buttonName={'Transaction History'}
-            imgId={'transaction-history-button'}
-            imgSrc={'/assets/transaction-history.png'}
-            imgAlt={'Transaction History'}
-          />
-        </Link>
+        <div id="button-container">
+          <Link to='send-money'>
+            <LandingButton
+              buttonName={'Send Money'}
+              imgId={'send-money-button'}
+              imgSrc={'/assets/send-money.png'}
+              imgAlt={'Send Money'}
+            />
+          </Link>
+          <Link to='transaction-history'>
+            <LandingButton
+              buttonName={'Transaction History'}
+              imgId={'transaction-history-button'}
+              imgSrc={'/assets/transaction-history.png'}
+              imgAlt={'Transaction History'}
+            />
+          </Link>
+        </div>
       </div>
     )
   }

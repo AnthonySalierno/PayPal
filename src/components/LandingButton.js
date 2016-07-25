@@ -1,9 +1,9 @@
 function LandingButton(props) {
   return (
-    <div className="landing-button">
-      <span>{props.buttonName}</span>
-      <img id={props.imgId} className={"button-image"} src={props.imgSrc} alt={props.imgAlt} />
-    </div>
+    <figure id={props.imgId}>
+      <img src={props.imgSrc} alt={props.imgAlt} />
+      <figcaption>{props.buttonName}</figcaption>
+    </figure>
   )
 }
 

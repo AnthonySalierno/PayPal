@@ -1,10 +1,26 @@
-.landing-button {
-  display: inline;
-  padding: 50px;
+.title .paypal-logo {
+  vertical-align: middle;
+  height: auto;
+  width: auto;
 }
 
-div {
-  padding-bottom: 50px;
+.paypal-logo {
+  padding-right: 20px;
+}
+
+figure figcaption {
+  text-align: center;
+  display: inline;
+}
+
+#send-money-button {
+  text-align: center;
+  display: inline;
+}
+
+#transaction-history-button {
+  text-align: center;
+  display: inline;
 }
 
 .currency-input {
@@ -32,7 +48,7 @@ input[name="currency"] {
 }
 
 #button-container {
-  background: #009cde;
+  /*background: #009cde;*/
 }
 
 .radio-item{
@@ -65,13 +81,14 @@ button {
   background-color: #0070ba;
 }
 
-.paypal-logo {
-  height: auto;
-  width: auto;
-}
-
 .spinner {
   position: fixed;
   top: 50%;
   left: 50%;
+}
+
+textarea {
+  height: 200px;
+  width: 400px;
+  resize: none;
 }
