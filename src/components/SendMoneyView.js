@@ -11,6 +11,7 @@ class SendMoneyView extends React.Component {
       amount: '0.00',
       message: '',
       category: '',
+      fetching: false,
       sent: false,
       currency: 'USD',
       symbol: '$',
@@ -49,20 +50,28 @@ class SendMoneyView extends React.Component {
     const emailValidation = this.validateEmail();
     const amountValidation = this.validateAmount();
     if (emailValidation && amountValidation) {
-      fetch('/send-money', {
-        method: 'POST',
-        body: JSON.stringify({
-          email,
-          amount,
-          category,
-          currency,
-        }),
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      }).then((res) => this.setState({
-        sent: true,
-      }));
+      const makePayment = () => {
+        fetch('/send-money', {
+          method: 'POST',
+          body: JSON.stringify({
+            email,
+            amount,
+            category,
+            currency,
+          }),
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }).then((res) => this.setState({
+          sent: true,
+          fetching: false,
+        }));
+      }
+
+      this.setState({
+        fetching: true,
+      }, makePayment);
+
     }
   }
 
@@ -70,11 +79,6 @@ class SendMoneyView extends React.Component {
     const component = this.state.sent ?
       <PaymentComplete
         { ...this.state }
-        handleChange={this.handleChange}
-        clearForm={this.clearForm}
-        validateEmail={this.validateEmail}
-        validateAmount={this.validateAmount}
-        submitPayment={this.submitPayment}
       /> :
       <PaymentForm
         { ...this.state }
@@ -85,8 +89,11 @@ class SendMoneyView extends React.Component {
         submitPayment={this.submitPayment}
       />
 
+    const spinner = this.state.fetching ? <div className="spinner"><img src='assets/spinner.gif'/></div> : ''
+
     return (
       <div>
+        {spinner}
         <h1>Send Money</h1>
         {component}
       </div>

@@ -5,6 +5,7 @@ export default function PaymentForm(props) {
     message,
     category,
     sent,
+    submitted,
     currency,
     symbol,
     handleChange,

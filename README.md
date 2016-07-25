@@ -5,7 +5,6 @@ I used
 
 ## To Do
 * Render loading view on payment submission
-* Render success screen following loading screen
 * Implement infinite scrolling
 * Render proper currency symbol on dropdown change
 * Prompt user if input validation fails
