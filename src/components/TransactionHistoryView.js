@@ -56,7 +56,7 @@ class TransactionHistoryView extends React.Component {
   render() {
     return (
       <div className="container">
-        <h1>Transaction History</h1>
+        <h1 className="sub-title">Transaction History</h1>
         <div className="transaction-list">
           {this.state.payments.map(({email, amount, currency, createdAt, id}) =>
             <TransactionItem key={id} email={email} amount={amount} currency={currency} createdAt={createdAt}/>)}

@@ -7,6 +7,7 @@ class LandingPage extends React.Component {
   render() {
     return (
       <div>
+        <h1 className="sub-title">UIE Take Home Exercise</h1>
         <div className="container">
           <Link to='send-money' className="image-link left-link">
             <LandingButton

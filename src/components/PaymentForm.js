@@ -20,11 +20,11 @@ export default function PaymentForm(props) {
 
   const emailValidation = emailValidated === false ?
     <div className="invalid">Please enter a valid email: example@gmail.com</div> :
-    <div className="valid">Almost there!</div>;
+    <div className="valid">Keep going!</div>;
 
   const amountValidation = amountValidated === false ?
     <div className="invalid">Please enter a valid amount: x.xx</div> :
-    <div className="valid">Keep going!</div>;
+    <div className="valid">Almost there!</div>;
 
   return (
     <div className="container">
@@ -40,16 +40,16 @@ export default function PaymentForm(props) {
         {emailValidation}
       </div>
       <div className="payment-input-container">
-        <span>{symbol}</span>
+        <span>   {symbol}</span>
         <input
           className="payment-input"
           type="text"
           maxLength="10"
           name="currency"
-          placeholder='0.00'
           onChange={e => handleChange('amount', e) }
+          value={amount}
         />
-        <select onChange={(e) => handleChange('currency', e)} value={currency}>
+        <select className="currency-select" onChange={(e) => handleChange('currency', e)} value={currency}>
           <option value="USD">USD</option>
           <option value="EUR">EUR</option>
           <option value="JPY">JPY</option>
@@ -58,6 +58,7 @@ export default function PaymentForm(props) {
       </div>
       <div className="payment-input-container">
         <textarea
+          className="message-text"
           placeholder="Message (optional):"
           type="text"
           name="email-address"
@@ -76,7 +77,7 @@ export default function PaymentForm(props) {
           onChange={e => handleChange('category', e) }
         />
         <label className="label-item" htmlFor="radio1">
-          <img src="assets/send-money-personal.png"/>
+          <img className="friends-image" src="assets/send-money-personal.png"/>
         </label>
         <input
           id="radio2"
@@ -88,7 +89,7 @@ export default function PaymentForm(props) {
           onChange={e => handleChange('category', e) }
         />
         <label className="label-item" htmlFor="radio2">
-          <img src="assets/send-money-business.png"/>
+          <img className="business-image" src="assets/send-money-business.png"/>
         </label>
       </div>
       <button className="clear-form" onClick={clearForm}>Clear</button>
