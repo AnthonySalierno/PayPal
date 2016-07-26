@@ -1,9 +1,11 @@
 # PayPal UIE Take Home Exercise
 
 ## Description
-Hello!  For this take home exercise I used React to build the view, Node and Express for the server and SQLite for the database with Sequelize as an ORM.  
+Hello!  For this take home exercise I used React to build the front-end, Node and Express for the server and SQLite for the database with Sequelize as an ORM.  I generated a set of dummy data that loads on npm start before the server starts.  This list contains 250 records.  Users can enter in transactions in send money view and those will be added to the database and render in transaction view.
 
-## To Do
+Please let me know if you have any questions!  Thanks!
+
+## Next steps
 * Modularize server
 * Add linter
 * Unit tests
@@ -11,6 +13,7 @@ Hello!  For this take home exercise I used React to build the view, Node and Exp
 
 ## Start-up
 ```
+clone repo
 npm install
 npm start
 ```
