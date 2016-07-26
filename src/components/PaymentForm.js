@@ -19,53 +19,53 @@ export default function PaymentForm(props) {
   const symbol = currencyToSymbol(currency);
 
   const emailValidation = emailValidated === false ?
-    <div className="email-not-validated">Please enter a valid email: example@gmail.com</div> :
-    <div className="email-validated">Almost there!</div>;
+    <div className="invalid">Please enter a valid email: example@gmail.com</div> :
+    <div className="valid">Almost there!</div>;
 
   const amountValidation = amountValidated === false ?
-    <div className="amount-not-validated">Please enter a valid amount: x.xx</div> :
-    <div className="amount-validated">Keep going!</div>;
+    <div className="invalid">Please enter a valid amount: x.xx</div> :
+    <div className="valid">Keep going!</div>;
 
   return (
-    <div>
-      <div className="email-input">
+    <div className="container">
+      <div className="payment-input-container">
+        <span>To:</span>
         <input
+          className="payment-input"
           type="text"
           name="email"
           value={email}
           onChange={(e) => handleChange('email', e) }
         />
-        <span className="email-payee">To:</span>
         {emailValidation}
       </div>
-      <div className="currency-input">
+      <div className="payment-input-container">
+        <span>{symbol}</span>
         <input
+          className="payment-input"
           type="text"
           maxLength="10"
           name="currency"
           placeholder='0.00'
           onChange={e => handleChange('amount', e) }
         />
-        <span className="currency-type">{symbol}</span>
-
-        <select className="currency-dropdown" onChange={(e) => handleChange('currency', e)} value={currency}>
+        <select onChange={(e) => handleChange('currency', e)} value={currency}>
           <option value="USD">USD</option>
           <option value="EUR">EUR</option>
           <option value="JPY">JPY</option>
         </select>
         {amountValidation}
       </div>
-      <div>
+      <div className="payment-input-container">
         <textarea
           placeholder="Message (optional):"
-          className="email-input"
           type="text"
           name="email-address"
           value={message}
           onChange={(e) => handleChange('message', e) }
         />
       </div>
-      <div>
+      <div className="payment-input-container">
         <input
           id="radio1"
           className="radio-item"

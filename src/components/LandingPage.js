@@ -7,23 +7,17 @@ class LandingPage extends React.Component {
   render() {
     return (
       <div>
-        <h1 className="title">
-          <img className="paypal-logo" src='assets/paypal-logo.png'/>
-          UIE Take Home Exercise
-        </h1>
-        <div id="button-container">
-          <Link to='send-money'>
+        <div className="container">
+          <Link to='send-money' className="image-link left-link">
             <LandingButton
               buttonName={'Send Money'}
-              imgId={'send-money-button'}
               imgSrc={'/assets/send-money.png'}
               imgAlt={'Send Money'}
             />
           </Link>
-          <Link to='transaction-history'>
+          <Link to='transaction-history' className="image-link right-link">
             <LandingButton
               buttonName={'Transaction History'}
-              imgId={'transaction-history-button'}
               imgSrc={'/assets/transaction-history.png'}
               imgAlt={'Transaction History'}
             />

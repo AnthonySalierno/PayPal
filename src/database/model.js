@@ -13,7 +13,6 @@ const Payments = sequelize.define('Payments', {
   category: Sequelize.STRING,
 });
 
-// TODO: change to es6
 module.exports = {
   sequelize,
   Payments,

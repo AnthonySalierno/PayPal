@@ -20,12 +20,14 @@ class TransactionHistoryView extends React.Component {
   }
 
   componentDidMount() {
-    window.addEventListener('scroll', this.debouncedFetch);
+    const transactionList = document.querySelector('.transaction-list')
+    transactionList.addEventListener('scroll', this.debouncedFetch);
     this.fetchTransactionData();
   }
 
   compnentWillUnmount() {
-    window.removeEventListener('scroll', this.debouncedFetch);
+    const transactionList = document.querySelector('.transaction-list')
+    transactionList.removeEventListener('scroll', this.debouncedFetch);
   }
 
   fetchTransactionData() {
@@ -53,13 +55,17 @@ class TransactionHistoryView extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="container">
         <h1>Transaction History</h1>
-        {this.state.payments.reverse().map(({email, amount, currency, createdAt}, i) =>
-          <TransactionItem key={i} email={email} amount={amount} currency={currency} createdAt={createdAt}/>)}
-        <Link to="/">
-          <button>Back</button>
-        </Link>
+        <div className="transaction-list">
+          {this.state.payments.reverse().map(({email, amount, currency, createdAt}, i) =>
+            <TransactionItem key={i} email={email} amount={amount} currency={currency} createdAt={createdAt}/>)}
+        </div>
+        <div>
+          <Link to="/">
+            <button>Back</button>
+          </Link>
+        </div>
       </div>
     )
   }

@@ -107,7 +107,7 @@ class SendMoneyView extends React.Component {
     return (
       <div>
         {spinner}
-        <h1>Send Money</h1>
+        <h1 className="sub-title">Send Money</h1>
         {component}
       </div>
     )
