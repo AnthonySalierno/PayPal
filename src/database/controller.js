@@ -7,9 +7,17 @@ export function addPayment(payment) {
 }
 
 export function getPayments(page) {
-  const offset = MAX_PAYMENTS * page;
-  return db.Payments.findAll({
-    offset: offset,
-    limit: MAX_PAYMENTS,
-  });
+  return db.Payments.count()
+    .then((count) => {
+      let offset = count - MAX_PAYMENTS * (parseInt(page, 10) + 1) + 1;
+      let limit = MAX_PAYMENTS
+      if (offset < 0) {
+        offset = 0;
+        limit = count % MAX_PAYMENTS;
+      }
+      return db.Payments.findAll({
+        offset,
+        limit,
+      });
+    });
 }

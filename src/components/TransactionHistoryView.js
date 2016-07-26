@@ -15,19 +15,19 @@ class TransactionHistoryView extends React.Component {
     }
 
     this.fetchTransactionData = this.fetchTransactionData.bind(this);
-    this.debouncedFetch = debounce(this.fetchTransactionData, 200);
     this.handleScroll = this.handleScroll.bind(this);
+    this.debouncedHandleScroll = debounce(this.handleScroll, 200);
   }
 
   componentDidMount() {
-    const transactionList = document.querySelector('.transaction-list')
-    transactionList.addEventListener('scroll', this.debouncedFetch);
+    const transactionList = document.querySelector('.transaction-list');
+    transactionList.addEventListener('scroll', this.debouncedHandleScroll);
     this.fetchTransactionData();
   }
 
   compnentWillUnmount() {
-    const transactionList = document.querySelector('.transaction-list')
-    transactionList.removeEventListener('scroll', this.debouncedFetch);
+    const transactionList = document.querySelector('.transaction-list');
+    transactionList.removeEventListener('scroll', this.debouncedHandleScroll);
   }
 
   fetchTransactionData() {
@@ -43,12 +43,12 @@ class TransactionHistoryView extends React.Component {
       })
   }
 
-  handleScroll(event) {
-    const innerHeight = window.innerHeight;
-    const scrollY = window.scrollY;
-    const offsetHeight = document.body.offsetHeight;
+  handleScroll(e) {
+    const totalScrollHeight = e.target.scrollHeight;
+    const visibleDivHeight = e.target.clientHeight;
+    const currentScrollPosition = e.target.scrollTop;
 
-    if ((innerHeight + scrollY) >= offsetHeight) {
+    if (currentScrollPosition + visibleDivHeight === totalScrollHeight) {
       this.fetchTransactionData();
     }
   }
@@ -58,8 +58,8 @@ class TransactionHistoryView extends React.Component {
       <div className="container">
         <h1>Transaction History</h1>
         <div className="transaction-list">
-          {this.state.payments.reverse().map(({email, amount, currency, createdAt}, i) =>
-            <TransactionItem key={i} email={email} amount={amount} currency={currency} createdAt={createdAt}/>)}
+          {this.state.payments.map(({email, amount, currency, createdAt, id}) =>
+            <TransactionItem key={id} email={email} amount={amount} currency={currency} createdAt={createdAt}/>)}
         </div>
         <div>
           <Link to="/">

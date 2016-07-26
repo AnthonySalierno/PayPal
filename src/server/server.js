@@ -46,6 +46,7 @@ app.get('*', function response(req, res) {
 
 const PORT = 8080;
 
+// Populate database with dummy data before starting server
 initializeDatabase().then(() => {
   app.listen(PORT, () => {
     console.log('App listening on port ' + PORT)
