@@ -4,6 +4,7 @@ export default function PaymentForm(props) {
   const {
     email,
     emailValidated,
+    matches,
     amount,
     amountValidated,
     message,
@@ -12,6 +13,7 @@ export default function PaymentForm(props) {
     submitted,
     currency,
     handleChange,
+    handleEmailInput,
     clearForm,
     submitPayment,
   } = props;
@@ -26,6 +28,10 @@ export default function PaymentForm(props) {
     <div className="invalid">Please enter a valid amount: x.xx</div> :
     <div className="valid">Almost there!</div>;
 
+  const showMatches = matches.map((object) => {
+    return <div key={object.id}>{object.firstName}</div>
+  })
+
   return (
     <div className="container">
       <div className="payment-input-container">
@@ -38,6 +44,7 @@ export default function PaymentForm(props) {
           onChange={(e) => handleChange('email', e) }
         />
         {emailValidation}
+        {}
       </div>
       <div className="payment-input-container">
         <span>   {symbol}</span>
@@ -55,6 +62,7 @@ export default function PaymentForm(props) {
           <option value="JPY">JPY</option>
         </select>
         {amountValidation}
+        {showMatches}
       </div>
       <div className="payment-input-container">
         <textarea

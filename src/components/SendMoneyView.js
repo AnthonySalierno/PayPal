@@ -10,6 +10,7 @@ class SendMoneyView extends React.Component {
     this.default = {
       email: '',
       emailValidated: false,
+      matches: [],
       amount: '',
       amountValidated: false,
       message: '',
@@ -26,18 +27,62 @@ class SendMoneyView extends React.Component {
     this.validateEmail = this.validateEmail.bind(this);
     this.validateAmount = this.validateAmount.bind(this);
     this.submitPayment = this.submitPayment.bind(this);
+    this.handlEmailInput = this.handleEmailInput.bind(this);
   }
 
   handleChange(stateProp, event) {
     const newState = {};
     newState[stateProp] = event.target.value;
     this.setState(newState);
+    this.handleEmailInput(event);
     this.validateEmail();
     this.validateAmount();
   }
 
   clearForm() {
     this.setState(this.default);
+  }
+
+  handleEmailInput(event) {
+    const fakeEmails = [
+      {
+        firstName: 'Anthony',
+        lastName: 'Salierno,',
+        email: 'anthony.salierno@gmail.com',
+        currency: 'USD',
+        id: 1,
+      },
+      {
+        firstName: 'Anne',
+        lastName: 'Salierno,',
+        email: 'anne.salierno@gmail.com',
+        currency: 'USD',
+        id: 2,
+      },
+      {
+        firstName: 'Bill',
+        lastName: 'Salierno,',
+        email: 'bill.salierno@gmail.com',
+        currency: 'USD',
+        id: 3,
+      },
+    ];
+
+    const typed = event.target.value;
+
+    let newMatches = [];
+    for (var i = 0; i < fakeEmails.length; i++) {
+      if (fakeEmails[i].firstName.includes(typed) ||
+        fakeEmails[i].lastName.includes(typed) ||
+        fakeEmails[i].email.includes(typed)) {
+          newMatches.push(fakeEmails[i]);
+      }
+    }
+
+    this.setState({
+      matches: newMatches,
+    });
+    
   }
 
   validateEmail() {
@@ -94,6 +139,7 @@ class SendMoneyView extends React.Component {
       /> :
       <PaymentForm
         { ...this.state }
+        handleEmailInput={this.handleEmailInput}
         handleChange={this.handleChange}
         clearForm={this.clearForm}
         validateEmail={this.validateEmail}
